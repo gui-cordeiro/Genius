@@ -2,7 +2,7 @@
 
 <h1 align="center">🕹️ Genius - Jogo da Memória 🧠</h1>
 <img src="https://github.com/gui-cordeiro/Genius/assets/83349463/a500d03e-9269-4b86-a7f8-bfee74c54520" alt="Logo do projeto Genius"/>
-<h3 align="center">🧩 O famoso jogo de memória rodando no seu Arduino (e em outros microcontroladores). 🧩<br> Quantas cores você consegue memorizar?</h3>
+<h3 align="center">🧩 O famoso jogo de memória rodando no seu Arduino (e em outras devboards) 🧩<br> Quantas cores você consegue memorizar?</h3>
 <br>
 
 ## 📕 Sobre o projeto
