@@ -1,24 +1,28 @@
 <h1 align="center">🕹️ Genius - Jogo da Memória 🧠</h1>
 <img src="https://github.com/gui-cordeiro/Genius/assets/83349463/a500d03e-9269-4b86-a7f8-bfee74c54520" alt="Logo do projeto Genius"/>
-<h3 align="center">🧩 O famoso jogo de memória rodando no seu Arduino (e em outras devboards) 🧩<br> Quantas cores você consegue memorizar?</h3>
+<h3 align="center">🧩 O famoso jogo de memória no Arduino e em outros microcontroladores 🧩<br> Quantas cores você consegue memorizar?</h3>
 <br>
 
 ## 📕 Sobre o projeto
-Este é um simples projeto baseado no famoso jogo de memória, que roda no Arduino ou em qualquer outro microcontrolador.
+Este é um simples projeto baseado no famoso jogo de memória, que roda no Arduino ou em qualquer outro microcontrolador. Basta encaixar os componentes necessários (listados abaixo), carregar o sketch do projeto e se divertir!
 
 ## ⚙️ Instruções de como fazer o projeto funcionar
-<p> São necessários os seguintes componentes para construir o seu protótipo do Genius:</p>
+<p> São necessários os seguintes componentes para construir o seu próprio protótipo de Genius:</p>
 <ul>
   <li>1x microcontrolador (Arduino UNO, por exemplo);</li>
   <li>4x LED's;</li>
+  <li>4x resistores de 220 Ω;</li>
   <li>4x <em>pushbuttons</em>;</li>
   <li>1x buzzer passivo (opcional); e</li>
   <li>Jumpers para conexões.</li>
 </ul>
-<p>Observe abaixo um exemplo de diagrama esquemático do projeto. Sinta-se livre para fazer as alterações que desejar: </p>
-<img alt="Exemplo de diagrama esquemático do projeto" width="55%" src="https://github.com/gui-cordeiro/Genius/assets/83349463/c0f79ea6-8175-4b75-af34-75ecf96c55cd.png"/>
+<p>Observe abaixo o diagrama esquemático do projeto. Sinta-se livre para fazer as alterações que desejar: </p>
+<img alt="Exemplo de diagrama esquemático do projeto" width="100%" src="https://github.com/gui-cordeiro/Genius/assets/83349463/08c40166-8030-4fec-90df-6d3646d25fa0"/>
 
-O jogo inicia assim que o microcontrolador é alimentado. A cada rodada, uma cor nova acenderá e será adicionada à sequência que o jogador deverá seguir à risca.
+
+O jogo inicia assim que o microcontrolador é alimentado.
+
+A cada rodada, uma cor nova acenderá e será adicionada à sequência que o jogador deverá seguir à risca.
 
 ## 🛠️ Linguagens e ferramentas utilizadas no desenvolvimento do projeto
 <a href="#"><img alt="Ícone transparente" width="10em" height="20em" src="https://user-images.githubusercontent.com/83349463/151667763-eed1f9e2-ff23-462e-be41-a6046ad8434a.png"/></a>
@@ -46,3 +50,5 @@ code
 ````
 4) Por padrão, o projeto está configurado para funcionar nos Arduinos UNO, Nano e em outros que possuam o chip ATmega328P embutidos. Caso queira usar outra placa de desenvolvimento, altere o documento <code>platformio.ini</code> que está situado na raíz do repositório. Consulte a [documentação do PlatformIO](https://docs.platformio.org/en/latest/boards/index.html#boards) referente à *configuração de outras placas de desenvolvimento* para mais informações.
 <img src="https://github.com/gui-cordeiro/Genius/assets/83349463/f65a3f1b-e054-48a8-b913-0b7d3c40fb32.png" alt="Print do arquivo platformio.ini"/>
+
+5) Em caso de dúvidas, envie um e-mail para mim [clicando aqui](mailto:guisg.cordeiro@gmail.com). Caso encontre algum problema, [crie uma issue](https://github.com/gui-cordeiro/Genius/issues) para que eu possa averiguar melhor.
