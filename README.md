@@ -9,11 +9,11 @@ Este é um simples projeto baseado no famoso jogo de memória, que roda no Ardui
 ## ⚙️ Instruções de como fazer o projeto funcionar
 <p> São necessários os seguintes componentes para construir o seu próprio protótipo de Genius:</p>
 <ul>
-  <li>1x microcontrolador (Arduino UNO, por exemplo);</li>
-  <li>4x LED's;</li>
+  <li>1x microcontrolador <strong>(Arduino UNO, por exemplo)</strong>;</li>
+  <li>4x LED's <strong>(preferencialmente de cores diferentes)</strong>;</li>
   <li>4x resistores de 220 Ω;</li>
   <li>4x <em>pushbuttons</em>;</li>
-  <li>1x buzzer passivo (opcional); e</li>
+  <li>1x buzzer passivo <strong>(OPCIONAL)</strong>; e</li>
   <li>Jumpers para conexões.</li>
 </ul>
 <p>Observe abaixo o diagrama esquemático do projeto. Sinta-se livre para fazer as alterações que desejar: </p>
