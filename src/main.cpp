@@ -40,125 +40,145 @@ int cont = 0;
 void acenderLED(int LED, int freq, int delayLED);
 
 void setup() {
-	//Serial.begin(9600);
-	// Setando os pinos como "Entrada(Pull-Up)" ou "Saída"
-	pinMode(LED_Amarelo, OUTPUT);
-	pinMode(LED_Verde, OUTPUT);
-	pinMode(LED_Vermelho, OUTPUT);
-	pinMode(LED_Azul, OUTPUT);
-	pinMode(btn_Amarelo, INPUT_PULLUP);
-	pinMode(btn_Verde, INPUT_PULLUP);
-	pinMode(btn_Vermelho, INPUT_PULLUP);
-	pinMode(btn_Azul, INPUT_PULLUP);
-	pinMode(Buzzer, OUTPUT);
+   Serial.begin(9600);
+   
+   // Setando os pinos como "Entrada(Pull-Up)" ou "Saída"
+   pinMode(LED_Amarelo, OUTPUT);
+   pinMode(LED_Verde, OUTPUT);
+   pinMode(LED_Vermelho, OUTPUT);
+   pinMode(LED_Azul, OUTPUT);
+   pinMode(btn_Amarelo, INPUT_PULLUP);
+   pinMode(btn_Verde, INPUT_PULLUP);
+   pinMode(btn_Vermelho, INPUT_PULLUP);
+   pinMode(btn_Azul, INPUT_PULLUP);
+   pinMode(Buzzer, OUTPUT);
 
-	// Gerando uma seed para criar uma sequência aleatória de cores
-	randomSeed(analogRead(A0));
-	
-	// Introdução ao jogo
-	for (int cont = 0; cont < 2; cont ++) {
-		acenderLED(LED_Amarelo, 0, 150);
-		acenderLED(LED_Verde, 0, 150);
-		acenderLED(LED_Vermelho, 0, 150);
-		acenderLED(LED_Azul, 0, 150);
-		acenderLED(LED_Vermelho, 0, 150);
-		acenderLED(LED_Verde, 0, 150);
-	}
-	acenderLED(LED_Amarelo, 0, 150);
-	for (int cont = 0; cont <= 3; cont ++) {
-		digitalWrite(LED_Amarelo, HIGH);
-		digitalWrite(LED_Verde, HIGH);
-		digitalWrite(LED_Vermelho, HIGH);
-		digitalWrite(LED_Azul, HIGH);
-		delay(100);
-		digitalWrite(LED_Amarelo, LOW);
-		digitalWrite(LED_Verde, LOW);
-		digitalWrite(LED_Vermelho, LOW);
-		digitalWrite(LED_Azul, LOW);
-		delay(100);
-	}
-	delay(1400);
+   // Mensagem de boas-vindas
+   Serial.println("\n\n+--------------------------+");
+   Serial.println("| Genius - Jogo da Memória |");
+   Serial.println("+--------------------------+");
+   Serial.println("| Sua pontuação final será |");
+   Serial.println("| exibida assim que você   |");
+   Serial.println("| errar uma cor!           |");
+   Serial.println("+--------------------------+\n\n");
+
+   // Gerando uma seed para criar uma sequência aleatória de cores
+   randomSeed(analogRead(A0));
+   
+   // Rotina de introdução ao jogo
+   for (int cont = 0; cont < 2; cont ++) {
+      acenderLED(LED_Amarelo, 0, 150);
+      acenderLED(LED_Verde, 0, 150);
+      acenderLED(LED_Vermelho, 0, 150);
+      acenderLED(LED_Azul, 0, 150);
+      acenderLED(LED_Vermelho, 0, 150);
+      acenderLED(LED_Verde, 0, 150);
+   }
+   acenderLED(LED_Amarelo, 0, 150);
+   for (int cont = 0; cont <= 3; cont ++) {
+      digitalWrite(LED_Amarelo, HIGH);
+      digitalWrite(LED_Verde, HIGH);
+      digitalWrite(LED_Vermelho, HIGH);
+      digitalWrite(LED_Azul, HIGH);
+      delay(100);
+      digitalWrite(LED_Amarelo, LOW);
+      digitalWrite(LED_Verde, LOW);
+      digitalWrite(LED_Vermelho, LOW);
+      digitalWrite(LED_Azul, LOW);
+      delay(100);
+   }
+   delay(1400);
 }
 
 void loop() {
-	// O jogo atualmente armazena uma sequência de 100 cores. Isso será alterado futuramente para que a sequência seja indefinida.
-	for(controle = 0; controle < 100; controle ++) {
+   // O jogo atualmente armazena uma sequência de 100 cores. Isso será alterado futuramente para que a sequência seja indefinida.
+   for(controle = 0; controle < 100; controle ++) {
 
-		// Escolhe qual LED será aceso e armazena no vetor
-		sequencia[controle] = random(4);
+      // Mensagem de inicio de jogo
+      if (controle == 0) Serial.println("-> COMECE O JOGO!");
 
-		// Loop que percorrerá por todo o vetor de sequência e acenderá as respectivas cores
-		for (int numero = 0; numero <= controle; numero ++) {
-			if (sequencia[numero] == 0) acenderLED(LED_Amarelo, Nota1, 500);
-			else if (sequencia[numero] == 1) acenderLED(LED_Verde, Nota2, 500);
-			else if (sequencia[numero] == 2) acenderLED(LED_Vermelho, Nota3, 500);
-			else if (sequencia[numero] == 3) acenderLED(LED_Azul, Nota4, 500);
-			delay(100);
-		}
+      // Escolhe qual LED será aceso e armazena no vetor
+      sequencia[controle] = random(4);
 
-		// Loop que aguardará a ação do jogador. Ao pressionar um botão, será verificado se tal botão corresponde à cor correta.
-		for (int numero = 0; numero <= controle; numero ++) {
-			if (digitalRead(btn_Amarelo) == 0) {
-				btnPressionado = 0;
-				acenderLED(LED_Amarelo, Nota4, 300);
-			} else if (digitalRead(btn_Verde) == 0) {
-				btnPressionado = 1;
-				acenderLED(LED_Verde, Nota2, 300);
-			} else if (digitalRead(btn_Vermelho) == 0) {
-				btnPressionado = 2;
-				acenderLED(LED_Vermelho, Nota3, 300);
-			} else if (digitalRead(btn_Azul) == 0) {
-				btnPressionado = 3;
-				acenderLED(LED_Azul, Nota4, 300);
-			}
+      // Loop que percorrerá por todo o vetor de sequência e acenderá as respectivas cores
+      for (int numero = 0; numero <= controle; numero ++) {
+         if (sequencia[numero] == 0) acenderLED(LED_Amarelo, Nota1, 500);
+         else if (sequencia[numero] == 1) acenderLED(LED_Verde, Nota2, 500);
+         else if (sequencia[numero] == 2) acenderLED(LED_Vermelho, Nota3, 500);
+         else if (sequencia[numero] == 3) acenderLED(LED_Azul, Nota4, 500);
+         delay(100);
+      }
 
-			if (btnPressionado == sequencia[numero]) { // A cor escolhida coincide com a cor armazenada no vetor - O jogo continua!
-				delay(10);
-				btnPressionado = -1;
+      // Loop que aguardará a ação do jogador. Ao pressionar um botão, será verificado se tal botão corresponde à cor correta.
+      for (int numero = 0; numero <= controle; numero ++) {
+         btnPressionado = -1;
+         while (btnPressionado == -1) {
+            if (digitalRead(btn_Amarelo) == 0) {
+               btnPressionado = 0;
+               acenderLED(LED_Amarelo, Nota1, 300);
+            } else if (digitalRead(btn_Verde) == 0) {
+               btnPressionado = 1;
+               acenderLED(LED_Verde, Nota2, 300);
+            } else if (digitalRead(btn_Vermelho) == 0) {
+               btnPressionado = 2;
+               acenderLED(LED_Vermelho, Nota3, 300);
+            } else if (digitalRead(btn_Azul) == 0) {
+               btnPressionado = 3;
+               acenderLED(LED_Azul, Nota4, 300);
+            }
+         }
+         delay(10);
 
-				/*Serial.print(numero);
-				Serial.print(" e ");
-				Serial.println(controle);*/
+         // Se "verdadeiro": Botão errado, fim de jogo! Se falso: Botão correto, o jogo continua!
+         if (btnPressionado != sequencia[numero]) {
 
-			} else { // A cor escolhida NÃO coincide com a cor armazenada no vetor - Fim de jogo!
-				// Encerramento do jogo
-				delay(150);
-				acenderLED(LED_Amarelo, Nota4, 150);
-				acenderLED(LED_Verde, Nota3, 150);
-				acenderLED(LED_Vermelho, Nota2, 150);
-				acenderLED(LED_Azul, Nota1, 150);
-				tone(Buzzer, Nota1);
-				for (int cont = 0; cont < 3; cont ++) {
-					digitalWrite(LED_Amarelo, HIGH);
-					digitalWrite(LED_Verde, HIGH);
-					digitalWrite(LED_Vermelho, HIGH);
-					digitalWrite(LED_Azul, HIGH);
-					delay(100);
-					digitalWrite(LED_Amarelo, LOW);
-					digitalWrite(LED_Verde, LOW);
-					digitalWrite(LED_Vermelho, LOW);
-					digitalWrite(LED_Azul, LOW);
-					delay(100);
-				}
-				noTone(Buzzer);
-				delay(1500);
+            // Printando a pontuação final e a resetando em seguida
+            Serial.print("-> FIM DE JOGO! Pontuação final: ");
+            Serial.print(controle);
+            Serial.println("\n\n");
+            controle = -1;
 
-				// Limpando vetor para iniciar um novo jogo
-				for (int limpar = 0; limpar < 100; limpar ++) {
-					sequencia[limpar] = NULL;
-				}
-				break;
-			}
-		}
-		// Pequeno delay para iniciar um novo loop e prosseguir com uma nova cor
-		delay(1000);
-	}
+            // Rotina de encerramento do jogo
+            delay(50);
+            acenderLED(LED_Amarelo, Nota4, 180);
+            acenderLED(LED_Verde, Nota3, 180);
+            acenderLED(LED_Vermelho, Nota2, 180);
+            acenderLED(LED_Azul, Nota1, 180);
+            tone(Buzzer, Nota1);
+            for (int cont = 0; cont < 4; cont ++) {
+               digitalWrite(LED_Amarelo, HIGH);
+               digitalWrite(LED_Verde, HIGH);
+               digitalWrite(LED_Vermelho, HIGH);
+               digitalWrite(LED_Azul, HIGH);
+               delay(100);
+               digitalWrite(LED_Amarelo, LOW);
+               digitalWrite(LED_Verde, LOW);
+               digitalWrite(LED_Vermelho, LOW);
+               digitalWrite(LED_Azul, LOW);
+               delay(100);
+            }
+            noTone(Buzzer);
+
+            // Limpando vetor para iniciar um novo jogo
+            for (int limpar = 0; limpar < 100; limpar ++) {
+               sequencia[limpar] = -1;
+            }
+
+            delay(1000);
+            break;
+         }
+      }
+      
+      // Pequeno delay para iniciar um novo loop e prosseguir com uma nova cor
+      delay(1000);
+   }
 }
 
 // A) Função para acender um determinado LED e acionar o buzzer numa frequência determinada, por um breve período de tempo (em ms)
 void acenderLED(int LED, int freq, int delayLED) {
-	digitalWrite(LED, HIGH);
-	tone(Buzzer, freq, delayLED);
-	digitalWrite(LED, LOW);
-	noTone(Buzzer);
+   digitalWrite(LED, HIGH);
+   if (freq != 0) tone(Buzzer, freq);
+   delay(delayLED);
+   digitalWrite(LED, LOW);
+   noTone(Buzzer);
 }
